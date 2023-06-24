@@ -39,7 +39,7 @@ def process_input(img):
   
   # Check if image has 4 channels (RGBA), if so, convert to RGB
   if img.shape[-1] == 4:
-    img = tf.image.rgb_to_grayscale(img[:,:,:3])
+    img = img[:,:,:3]
 
   img = tf.image.convert_image_dtype(img, tf.float32)
   shape = tf.cast(tf.shape(img)[:-1], tf.float32)
