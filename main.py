@@ -11,6 +11,13 @@ import tensorflow_hub as hub
 import numpy as np
 import pandas as pd 
 
+
+
+img_path = 'https://github.com/SalvatoreRa/StreamStyle/blob/main/img/robot_painting.png?raw=true'
+capt = 'An android painting. Image created by the author with DALL-E'
+img_logo = 'https://github.com/SalvatoreRa/StreamStyle/blob/main/img/logo.png?raw=true'
+
+
 def load_images():
     content_img = st.file_uploader("Choose the image to paint!")
     style_img = st.file_uploader("Choose the style!")
@@ -84,7 +91,15 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #000000;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">StreamStyle</p>', unsafe_allow_html=True)
+        
+        
+        
+    with col2:
+        response = requests.get(img_logo)
+        logo = Image.open(BytesIO(response.content))               
+        st.image(logo,  width=150)
     
+    response = requests.get(img_path)
     img_screen = Image.open(BytesIO(response.content))
     st.image(img_screen, caption=capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
     st.subheader('Transform the style of your image with AI')
