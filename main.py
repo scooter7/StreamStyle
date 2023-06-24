@@ -84,11 +84,6 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #000000;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">StreamStyle</p>', unsafe_allow_html=True)
-        
-    response = requests.get(img_path)
-    img_screen = Image.open(BytesIO(response.content))
-    st.image(img_screen, caption=capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
-    st.subheader('Transform the style of your image with AI')
     
 
     content, style = load_images()
