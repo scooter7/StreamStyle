@@ -85,13 +85,6 @@ def main():
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">StreamStyle</p>', unsafe_allow_html=True)
         
-        
-        
-    with col2:
-        response = requests.get(img_logo)
-        logo = Image.open(BytesIO(response.content))               
-        st.image(logo,  width=150)
-    
     response = requests.get(img_path)
     img_screen = Image.open(BytesIO(response.content))
     st.image(img_screen, caption=capt, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto")
