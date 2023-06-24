@@ -55,15 +55,15 @@ def process_output(tensor):
   return Image.fromarray(tensor)
 
 def load_model():
-    model = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
-    return model
+    return hub.load(
+        'https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2'
+    )
 
 def NST(model, content, style):
     t_content = process_input(content)
     t_style = process_input(style)
     out = model(tf.constant(t_content), tf.constant(t_style))[0]
-    result = process_output(out)
-    return result
+    return process_output(out)
 
 def outputs(style, content, styled_img):
     col1, col2, col3 = st.columns([0.25, 0.25, 0.25])
