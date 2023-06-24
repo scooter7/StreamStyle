@@ -84,13 +84,6 @@ def main():
         font-size:35px ; font-family: 'Cooper Black'; color: #000000;} 
         </style> """, unsafe_allow_html=True)
         st.markdown('<p class="font">StreamStyle</p>', unsafe_allow_html=True)
-        
-        
-        
-    with col2:
-        response = requests.get(img_logo)
-        logo = Image.open(BytesIO(response.content))               
-        st.image(logo,  width=150)
     
     response = requests.get(img_path)
     img_screen = Image.open(BytesIO(response.content))
